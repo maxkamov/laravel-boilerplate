@@ -37,6 +37,23 @@ services:
     networks:
       - laravel
 
+  php-cli:
+    build:
+      context: ./docker/development/php-cli
+      dockerfile: Dockerfile
+      args:
+          - UID=${UID:-1000}
+          - GID=${GID:-1000}
+    volumes:
+      - ./:/var/www/html
+#    extra_hosts:
+#      - "host.docker.internal:host-gateway" # Add this for Linux
+#    environment:
+#      PHP_IDE_CONFIG: 'serverName=Docker'
+    tty: true
+    networks:
+      - laravel
+
   mysql:
     image: mariadb:10.6
     tty: true
