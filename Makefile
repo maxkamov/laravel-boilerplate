@@ -8,7 +8,7 @@ docker-build: memory
 	sudo docker compose up --build -d
 
 test:
-	sudo docker compose exec php-cli vendor/bin/phpunit
+	sudo docker compose exec php-cli php artisan test
 
 optimize:
 	sudo docker compose exec php-cli php artisan optimize
